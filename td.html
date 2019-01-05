@@ -1,51 +1,64 @@
-<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
-
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
-<nav>
+<nav id="navbar">
   <header class="menu-header">Big-What? (Oh...)</header>
   <ul>
-    <a class="nav-link" href="#what"><li>What is it?</li></a>
-    <a class="nav-link" href="#"><li>Why use it?</li></a>
-    <a class="nav-link" href="#"><li>How to use it?</li></a>
-    <a class="nav-link" href="#"><li>Measuring growth rate</li></a>
-    <a class="nav-link" href="#"><li>Common growth rates</li></a>
-    <a class="nav-link" href="#"><li>Disadvantageous</li></a>
-    <a class="nav-link" href="#"><li>References</li></a>
+    <a class="nav-link" href="#what_is_it?"><li>What is it?</li></a>
+    <a class="nav-link" href="#why_use_it?"><li>Why use it?</li></a>
+    <a class="nav-link" href="#how_to_use_it?"><li>How to use it?</li></a>
+    <a class="nav-link" href="#common_growth_rates"><li>Common growth rates</li></a>
+    <a class="nav-link" href="#disadvantageous"><li>Disadvantageous</li></a>
+    <a class="nav-link" href="#references"><li>References</li></a>
   </ul>
 </nav>
 <main id="main-doc">
-  <section class="main-section" id="what">
+  <section class="main-section" id="what_is_it?">
     <header>What is it?</header>
     <article>
-      <p>Big-O refers to the notation typically used by computer scientists to represent/analyze the complexity of an algorithm (1). In other words, Big-O is used to determine how efficient an algorithm will run. While this may seem a mute point with algorithms computing small datasets, as there may seem to be no difference to the naked eye, an algorithms complexity (specifically time-complexity for our purposes) can have significant impact on performance (speed) as datasets scale. For this reason, Big-O notation is utilized to determine how efficiently an algorithm will perform at scale (and/or in the worst-case scenario).</p>
+      <p>Big-O refers to the notation typically used by computer scientists to represent/analyze the complexity of an algorithm (1). In other words, Big-O is used to determine how efficient an algorithm will run. While this may seem a mute point with algorithms computing small datasets, since there may seem to be no difference to the naked eye, an algorithm's complexity (specifically time-complexity for our purposes) can have significant impact on performance (speed) as datasets scale. For this reason, Big-O notation is utilized in part to determine how efficiently an algorithm will perform at scale (and/or in the worst-case scenario).</p>
     </article>
   </section>
-  <section class="main-section" id="why">
+  <section class="main-section" id="why_use_it?">
     <header>Why use it?</header>
     <article>
       <p>A major advantage in using Big-O to analyze algorithms revolves around the 'work smarter not harder' concept. As alluded to, when initially developing an algorithm for a program, it may seem to perform with acceptable performance on a smaller/test dataset. However, when deployed at scale with datasets much larger in size, the programmer might find that the algorithm actually performs exponentially slower than originally presumed.</p>
-      <p>In a real-life scenario of developing a complex program (and/or simple program that will involve large/massive data sets and require optimal latency), analyzing an algorithms complexity ahead of time (via Big-O) can prevent these unexpected consequences and save time/reduce extra work required on the programmer's behalf down the road. This kind of complexity analysis can also aid in understanding overall program performance prior to actually writing any code.</p>
+      <p>In a real-life scenario of developing a complex program (and/or simple program that will involve large/massive data sets and require optimal latency), analyzing an algorithm's complexity ahead of time (via Big-O) can prevent these unexpected consequences and save time/reduce extra work required on the programmer's behalf down the road. In general, this kind of complexity analysis can aid in understanding overall program performance prior to actually writing any code.</p>
     </article>
   </section>
-  <section class="main-section" id="how">
+  <section class="main-section" id="how_to_use_it?">
     <header>How to use it?</header>
     <article>
-      <p> abc </p>
-      <p> xyz </p>
+      <p> Big-O is a representation of the rate at which runtime grows relative to it's input (2). In Big-O terms, input is typically depicted by <code>n</code>. With this in mind, Big-O is often articulated as "on the order of the size/x of the input," or <code>O(n)</code>.</p>
+      <p>In an effort to keep this as grasp-able as possible (and because, let's be honest, I'm still trying to figure this out myself), let's explore how Big-O growth rates are calculated through a few little examples. In the code snippet below, we can see an example where the runtime is considered constant - in other words, the runtime execution requires just one step, regardless of the input. We could have 1 or 1 million numbers in the array below, but the runtime wouldn't change. Because this constant runtime is independent of the input, the Big-O notation is: <code>O(1)</code>.</p>
+      <code><pre>public static void returnFirst(int[] myArray) {
+          
+    return myArray[0];
+}</pre></code>
+      <p>In some cases, i.e.: basic loops, runtime is directly proportional to the size of the input (<code>n</code>). In the code snippet below, the number of steps required to complete the loop is directly related to the size of the input, i.e.: if <code>n</code> is 2 there are 2 required steps, and if <code>n</code> is 100 there are 100 steps. This is considered to be of linear time-complexity, and in Big-O is represented as: <code>O(n)</code>.</p>
+      <code>public static void printAll(int[] myArray) {<pre>    for (int i : myArray) {</pre><pre>        System.out.println(i);
+    }
+}</pre></code>
+      <p>We've looked at linear and constant time-complexities, but what if the 'steps' required for runtime exceed these parameters? What if, for instance, we have an inner loop that runs <code>n</code> times for every <code>n</code> times of the outer loop? In this case, <code>n * n = n<sup>2</sup></code>, so the Big-O is represented as: <code>O(n<sup>2</sup>)</code>. This is referred to as quadratic time. The code snippet below exemplifies.</p>
+      <code> public static void printPairs(int[] myArray) {
+      <pre>    for (int elem1 : myArray) {
+         
+         for (int elem2 : myArray) {
+         
+              System.out.println(elem1 + "" + elem2);
+         }
+    }  
+}
+      </pre>
+      </code>
+      <p>As alluded to, Big-O is advantageous when evaluating an algorithims complexity with regards to datasets at scale and/or in the worst-case scenario. For this reason, when calculating Big-O we can drop both the constants as well as less significant terms. An algorithm that computes to <code>O(2n)</code> is considered to be <code>O(n)</code>, because as <code>n</code> grows to an extreme/worst-case size, the constant (<code>2</code>) makes less and less of an impact on runtime overall. In this same regard, an algorithm with complexity of <code>O(1+n/2+100)</code> is really just an <code>O(n)<code> algorithm.</code></p>
+      <p> //TODO WRITE ABOUT DROP LESS SIGNIFICANT TERMS </p>
     </article>
   </section>
-  <section class="main-section" id="measuring">
-    <header>Measuring growth rate</header>
-    <article>
-      <p> abc </p>
-      <p> xyz </p>
-    </article>
-  </section>
-  <section class="main-section" id="common">
+  <section class="main-section" id="common_growth_rates">
     <header>Common growth rates</header>
     <article>
       <p> abc </p>
+      <code> code </code>
       <p> xyz </p>
     </article>
   </section>
@@ -56,7 +69,7 @@
       <p> xyz </p>
     </article>
   </section>
-  <section class="main-section" id="measuring">
+  <section class="main-section" id="references">
     <header>References</header>
     <article>
       <ul>
@@ -64,6 +77,7 @@
         <li> ref2 </li>
         <li> ref3 </li>
         <li> ref4 </li>
+        <li> ref5 </li>
       </ul>
     </article>
   </section>

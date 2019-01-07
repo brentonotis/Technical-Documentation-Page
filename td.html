@@ -1,13 +1,13 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 <nav id="navbar">
-  <header class="menu-header">Big-What? (Oh...)</header>
+  <header class="menu-header">Big-What? (O...)</header>
   <ul>
     <a class="nav-link" href="#what_is_it?"><li>What is it?</li></a>
     <a class="nav-link" href="#why_use_it?"><li>Why use it?</li></a>
     <a class="nav-link" href="#how_to_use_it?"><li>How to use it?</li></a>
-    <a class="nav-link" href="#common_growth_rates"><li>Common growth rates</li></a>
-    <a class="nav-link" href="#disadvantageous"><li>Disadvantageous</li></a>
+    <a class="nav-link" href="#growth_rates"><li>Growth Rates</li></a>
+    <a class="nav-link" href="#disadvantages"><li>Disadvantages</li></a>
     <a class="nav-link" href="#references"><li>References</li></a>
   </ul>
 </nav>
@@ -15,7 +15,7 @@
   <section class="main-section" id="what_is_it?">
     <header>What is it?</header>
     <article>
-      <p>Big-O refers to the notation typically used by computer scientists to represent/analyze the complexity of an algorithm (1). In other words, Big-O is used to determine how efficient an algorithm will run. While this may seem a mute point with algorithms computing small datasets, since there may seem to be no difference to the naked eye, an algorithm's complexity (specifically time-complexity for our purposes) can have significant impact on performance (speed) as datasets scale. For this reason, Big-O notation is utilized in part to determine how efficiently an algorithm will perform at scale (and/or in the worst-case scenario).</p>
+      <p>Big-O refers to the notation typically used by computer scientists to represent/analyze the complexity of an algorithm. In other words, Big-O is used to determine how efficient an algorithm will run. While this may seem a mute point with algorithms computing small datasets, since there may seem to be no difference to the naked eye, an algorithm's complexity (specifically time-complexity for our purposes) can have significant impact on performance (speed) as datasets scale. For this reason, Big-O notation is utilized in part to determine how efficiently an algorithm will perform at scale (and/or in the worst-case scenario).</p>
     </article>
   </section>
   <section class="main-section" id="why_use_it?">
@@ -28,20 +28,22 @@
   <section class="main-section" id="how_to_use_it?">
     <header>How to use it?</header>
     <article>
-      <p> Big-O is a representation of the rate at which runtime grows relative to it's input (2). In Big-O terms, input is typically depicted by <code>n</code>. With this in mind, Big-O is often articulated as "on the order of the size/x of the input," or <code>O(n)</code>.</p>
+      <p> Big-O is a representation of the rate at which runtime grows relative to it's input. In Big-O terms, input is typically depicted by <code>n</code>. With this in mind, Big-O is often articulated as "on the order of the size/x of the input," or <code>O(n)</code>.</p>
       <p>In an effort to keep this as grasp-able as possible (and because, let's be honest, I'm still trying to figure this out myself), let's explore how Big-O growth rates are calculated through a few little examples. In the code snippet below, we can see an example where the runtime is considered constant - in other words, the runtime execution requires just one step, regardless of the input. We could have 1 or 1 million numbers in the array below, but the runtime wouldn't change. Because this constant runtime is independent of the input, the Big-O notation is: <code>O(1)</code>.</p>
-      <code><pre>public static void returnFirst(int[] myArray) {
-          
-    return myArray[0];
-}</pre></code>
+      <code class="block"></br>public static void returnFirst(int[] myArray) {<pre>    return myArray[0];
+}
+
+</pre></code>
       <p>In some cases, i.e.: basic loops, runtime is directly proportional to the size of the input (<code>n</code>). In the code snippet below, the number of steps required to complete the loop is directly related to the size of the input, i.e.: if <code>n</code> is 2 there are 2 required steps, and if <code>n</code> is 100 there are 100 steps. This is considered to be of linear time-complexity, and in Big-O is represented as: <code>O(n)</code>.</p>
-      <code>public static void printAll(int[] myArray) {<pre>    for (int i : myArray) {
+      <code class="block"></br>public static void printAll(int[] myArray) {<pre>    for (int i : myArray) {
         
         System.out.println(i);
     }
-}</pre></code>
+}
+
+</pre></code>
       <p>We've looked at linear and constant time-complexities, but what if the 'steps' required for runtime exceed these parameters? What if, for instance, we have an inner loop that runs <code>n</code> times for every <code>n</code> times of the outer loop? In this case, <code>n * n = n<sup>2</sup></code>, so the Big-O is represented as: <code>O(n<sup>2</sup>)</code>. This is referred to as quadratic time. The number of steps required is the square of <code>n</code>. The snippet below exemplifies:</p>
-      <code> public static void printPairs(int[] myArray) {
+  <code class="block"></br> public static void printPairs(int[] myArray) {
       <pre>    for (int elem1 : myArray) {
          
          for (int elem2 : myArray) {
@@ -49,12 +51,12 @@
               System.out.println(elem1 + " : " + elem2);
          }
     }  
-}</pre></code><p>As alluded to, Big-O is advantageous when evaluating an algorithim's complexity with regards to datasets at scale and/or in the worst-case scenario. For this reason, when calculating Big-O we can drop both the constants and less significant terms. An algorithm that computes to <code>O(2n)</code> is considered to be <code>O(n)</code>, because as <code>n</code> grows to an extreme/worst-case size, the constant (<code>2</code>) makes less and less of an impact. In this same regard, an algorithm with a time-complexity of <code>O(1+n/2+100)</code> is really just an <code>O(n)</code> algorithm. This line of thought is applied to less significant terms as well. If we take two of our earlier examples and combine them, it would seem the time-complexity evaluates to <code>O(n + n<sup>2</sup>)</code>:</p>
-      <code><pre>public static void printAll(int[] myArray) {    
-      
-    for (int i : myArray) {
+}
+
+</pre></code><p>As alluded to, Big-O is advantageous when evaluating an algorithim's complexity with regards to datasets at scale and/or in the worst-case scenario. For this reason, when calculating Big-O we can drop both the constants and less significant terms. An algorithm that computes to <code>O(2n)</code> is considered to be <code>O(n)</code>, because as <code>n</code> grows to an extreme/worst-case size, the constant (<code>2</code>) makes less and less of an impact. In this same regard, an algorithm with a time-complexity of <code>O(1+n/2+100)</code> is really just an <code>O(n)</code> algorithm. This line of thought is applied to less significant terms as well. If we take two of our earlier examples and combine them, it would seem the time-complexity evaluates to <code>O(n + n<sup>2</sup>)</code>:</p>
+<code class="block"></br>public static void printAll(int[] myArray) {<pre>    for (int i : myArray) {
         
-        System.out.println(i);
+         System.out.println(i);
     }
 
     for (int elem1 : myArray) {
@@ -64,23 +66,24 @@
               System.out.println(elem1 + " : " + elem2);
          }
     }  
-}</pre></code><p>However, since the stand-alone <code>n</code> element is less significant than <code>n<sup>2</sup></code>, the Big-O notation for this algorithm is just <code>O(n<sup>2</sup>)</code>. In this same regard, an algorithm that evaluates to <code>O(n<sup>3</sup> + 10n<sup>2</sup> + 500)</code> translates to <code>O(n<sup>3</sup>)</code>. An algorithm that evaluates to <code>O((n + 1000) * (n + 100))</code> translates to <code>O(n<sup>2</sup>)</code>.</p>
+}
+
+</pre></code><p>However, since the stand-alone <code>n</code> element is less significant than <code>n<sup>2</sup></code>, the Big-O notation for this algorithm is just <code>O(n<sup>2</sup>)</code>. In this same regard, an algorithm that evaluates to <code>O(n<sup>3</sup> + 10n<sup>2</sup> + 500)</code> translates to <code>O(n<sup>3</sup>)</code>. An algorithm that evaluates to <code>O((n + 1000) * (n + 100))</code> translates to <code>O(n<sup>2</sup>)</code>.</p>
     </article>
   </section>
-  <section class="main-section" id="common_growth_rates">
-    <header>Common growth rates</header>
+  <section class="main-section" id="growth_rates">
+    <header>Growth Rates</header>
     <article>
       <p>So far, we've covered constant, linear, and quadratic time-complexities, but a myriad of growth-rate functions exist when evaluating algorithms. The outline below shows the most common growth-rate functions relative to their magnitude (when <code>n > 10</code>):</p>
-      <code> 1 &lt log(log n) &lt log n &lt log<sup>2</sup> n &lt n log n &lt n<sup>2</sup> &lt n<sup>3</sup> &lt 2<sup>n</sup> &lt n! </code>
+      <code class="block"> 1 &lt log(log n) &lt log n &lt log<sup>2</sup> &lt n &lt n log n &lt n<sup>2</sup> &lt n<sup>3</sup> &lt 2<sup>n</sup> &lt n! </code>
       <p>To visualize just how much of a difference growth-rates vary as the size of <code>n</code> increases, the following evaluates for this same outline of growth-rate functions when <code>n</code> equals <code>100</code>, <code>1,000</code>, and <code>10,000</code>:</p>
-    <code>1 3 7 44 100 664 10<sup>4</sup> 10<sup>6</sup> 10<sup>30</sup> 10<sup>94</sup></code></br></br>
-    <code>1 3 10 99 1000 9966 10<sup>6</sup> 10<sup>9</sup> 10<sup>301</sup> 10<sup>1435</sup></code></br></br>
-<code>1 4 13 177 10000 132877 10<sup>8</sup> 10<sup>12</sup> 10<sup>3010</sup> 10<sup>19335</sup></code></br></br>
-    
+    <code class="block">1 3 7 44 100 664 10<sup>4</sup> 10<sup>6</sup> 10<sup>30</sup> 10<sup>94</sup></br></br>
+  1 3 10 99 1000 9966 10<sup>6</sup> 10<sup>9</sup> 10<sup>301</sup> 10<sup>1435</sup></br></br>
+  1 4 13 177 10000 132877 10<sup>8</sup> 10<sup>12</sup> 10<sup>3010</sup> 10<sup>19335</sup></code></br>  
     </article>
   </section>
-  <section class="main-section" id="disadvantageous">
-    <header>Disadvantageous</header>
+  <section class="main-section" id="disadvantages">
+    <header>Disadvantages</header>
     <article>
       <p>While Big-O is definitely a valuable tool in evaluating an algorithm's efficiency, it's not without it's faults. A disadvantage of relying on Big-O is that Big-O only involves asymptotic performance; it doesn't implicitly take constant factors into account. That is to say Big O tracks the operations needed for an algorithm to perform, but doesn't keep track of results with cache misses or extra data that needs to be summoned from disk. Another disadvantage to consider is code cost; while a more complex algorithm may perform better, it may not be worth the headache of code that is so complex it becomes challenging to manage/interpret.</p>
     </article>
@@ -93,11 +96,11 @@
         <li> Bell, R. (2009). A Beginner's Guide to Big O Notation. Rob-Bell.net. Retrieved <a href="https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/" target="_blank">here</a>. </li>
         <li>Carrano, F., & Henry, T. (2018). <i>Data Structures and Abstractions with Java</i> (5th ed.). New York, New York: Pearson.</li>
         <li>Interview Cake (2018). Big O Notation. Interview Cake. Retrieved <a href="https://www.interviewcake.com/article/java/big-o-notation-time-and-space-complexity" target="_blank">here</a>.</li>
-        <li>Kolker, J (2009). When Does Big-O Notation Fail? Stack Overflow. Retrieved <a href="https://stackoverflow.com/questions/941283/when-does-big-o-notation-fail" target="_blank">here</a>.</li>
+        <li>Kolker, J. (2009). When Does Big-O Notation Fail? Stack Overflow. Retrieved <a href="https://stackoverflow.com/questions/941283/when-does-big-o-notation-fail" target="_blank">here</a>.</li>
         <li>Olorunnisola, M. (2016). Algorithms in Plain English: Time Complexity and Big-O Notation. Free Code Camp. Medium. Retrieved <a href="https://medium.freecodecamp.org/time-is-complex-but-priceless-f0abd015063c" target="_blank">here</a>.</li>
       </ul>
     </article>
   </section>
 </main>
-<footer class="footer"> A <a href="https://www.freecodecamp.org" target="_blank"><img id="img1" src="https://raw.githubusercontent.com/FreeCodeCamp/assets/master/assets/logos/fcc_puck600.png"></a> project<br><p> Coded with <i class="fas fa-hand-peace"></i><i class="fas fa-heart"></i> and <i class="fas fa-hand-rock"></i> by <a class="brenton" href="https://www.linkedin.com/in/brentonotis/Brenton Otis" target="_blank">Brenton</a></p>
+<footer class="footer"> A <a href="https://www.freecodecamp.org" target="_blank"><img id="img1" src="https://raw.githubusercontent.com/FreeCodeCamp/assets/master/assets/logos/fcc_puck600.png"></a> project<br><p> Coded with <i class="fas fa-hand-peace"></i><i class="fas fa-heart"></i> and <i class="fas fa-hand-rock"></i> by <a class="brenton" href="https://www.brentonotis.com/" target="_blank">Brenton</a></p>
 </footer>
